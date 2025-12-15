@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "client_name": {
+            "type": "string"
+        },
+        "provider_name": {
+            "type": "string"
+        },
+        "contract_value": {
+            "type": "number"
+        },
+        "legal_risks": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "client_name",
+        "provider_name"
+    ]
+}

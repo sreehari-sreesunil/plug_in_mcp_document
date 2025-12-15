@@ -1,0 +1,19 @@
+template_id: "service_agreement_v1"
+name: "Service Level Agreement"
+sections:
+  - id: "parties"
+    description: "Parties involved in the contract"
+    keywords: ["Between", "Client", "Provider"]
+  - id: "terms"
+    description: "Payment and duration terms"
+    keywords: ["Payment", "Term", "Effective Date"]
+  - id: "liability"
+    description: "Liability and indemnification"
+    keywords: ["Indemnification", "Liability", "Warranties"]
+extraction_rules:
+  - field: "client_name"
+    pattern: "Client:\\s*(.*)"
+  - field: "provider_name"
+    pattern: "Provider:\\s*(.*)"
+  - field: "contract_value"
+    pattern: "Total Value:\\s*[\\$]?([\\d,]+)"

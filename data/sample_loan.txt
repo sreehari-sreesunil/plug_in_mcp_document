@@ -1,0 +1,21 @@
+Personal Loan Application
+
+Name: John Doe
+Address: 123 Maple St, Springfield
+SSN: 123-45-6789
+DOB: 1980-01-01
+
+Employment Details:
+Employer: Acme Corp
+Position: Manager
+Years Employed: 5
+Annual Income: $55,000
+
+Loan Request:
+Loan Amount: 10000
+Purpose: Home Improvement
+Term: 36 months
+
+Signature: John Doe
+Date: 2023-10-27
+

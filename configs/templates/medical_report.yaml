@@ -1,0 +1,19 @@
+template_id: "medical_report_v1"
+name: "Medical Patient Report"
+sections:
+  - id: "patient_info"
+    description: "Patient identification details"
+    keywords: ["Patient Name", "DOB", "MRN", "Allergies"]
+  - id: "clinical_notes"
+    description: "Doctor's observations and diagnosis"
+    keywords: ["Diagnosis", "Symptoms", "Assessment"]
+  - id: "treatment_plan"
+    description: "Prescribed medications and follow-up"
+    keywords: ["Rx", "Medication", "Plan", "Follow-up"]
+extraction_rules:
+  - field: "patient_name"
+    pattern: "Patient Name:\\s*(.*)"
+  - field: "diagnosis"
+    pattern: "Diagnosis:\\s*(.*)"
+  - field: "medications"
+    pattern: "Rx:\\s*(.*)"

@@ -1,0 +1,17 @@
+template_id: "construction_specs_v1"
+name: "Construction Specification Document"
+sections:
+  - id: "project_details"
+    description: "Project scope and location"
+    keywords: ["Project Name", "Location", "Architect"]
+  - id: "materials"
+    description: "Material specifications"
+    keywords: ["Concrete", "Steel", "Glass", "Specs"]
+  - id: "structural"
+    description: "Structural engineering requirements"
+    keywords: ["Load", "Foundation", "Beams"]
+extraction_rules:
+  - field: "project_name"
+    pattern: "Project Name:\\s*(.*)"
+  - field: "architect"
+    pattern: "Architect:\\s*(.*)"

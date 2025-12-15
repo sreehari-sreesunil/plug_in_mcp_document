@@ -1,0 +1,12 @@
+rubric_id: "medical_risk_v1"
+name: "Patient Safety & Risk Rubric"
+criteria:
+  - id: "contraindication"
+    description: "Prescribed medication conflicts with allergies"
+    risk_level: "CRITICAL"
+  - id: "missing_diagnosis"
+    description: "Symptoms listed but no clear diagnosis"
+    risk_level: "HIGH"
+  - id: "incomplete_history"
+    description: "Missing past medical history section"
+    risk_level: "MEDIUM"

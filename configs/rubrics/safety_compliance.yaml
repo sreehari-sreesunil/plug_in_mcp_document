@@ -1,0 +1,12 @@
+rubric_id: "safety_compliance_v1"
+name: "Building Safety Compliance"
+criteria:
+  - id: "non_compliant_material"
+    description: "Use of asbestos or banned materials"
+    risk_level: "CRITICAL"
+  - id: "missing_fire_exit"
+    description: "Fire exit plans are absent"
+    risk_level: "HIGH"
+  - id: "accessibility"
+    description: "ADA compliance issues"
+    risk_level: "MEDIUM"

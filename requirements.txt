@@ -1,0 +1,9 @@
+fastmcp
+uvicorn
+pydantic
+PyYAML
+httpx
+pdfplumber
+jsonschema
+python-multipart
+google-genai

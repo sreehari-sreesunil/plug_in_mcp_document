@@ -1,0 +1,19 @@
+template_id: "legal_complaint_v1"
+name: "Legal Civil Complaint"
+sections:
+  - id: "parties"
+    description: "Plaintiff and Defendant details"
+    keywords: ["Plaintiff", "Defendant", "v."]
+  - id: "jurisdiction"
+    description: "Court jurisdiction and venue"
+    keywords: ["Jurisdiction", "Venue", "Court"]
+  - id: "claims"
+    description: "Causes of action"
+    keywords: ["Count I", "Count II", "Negligence", "Breach"]
+extraction_rules:
+  - field: "plaintiff"
+    pattern: "Plaintiff:\\s*(.*)"
+  - field: "defendant"
+    pattern: "Defendant:\\s*(.*)"
+  - field: "court"
+    pattern: "IN THE\\s*(.*)\\s*COURT"

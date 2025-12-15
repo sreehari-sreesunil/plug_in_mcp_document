@@ -1,0 +1,17 @@
+template_id: "bank_statement_v1"
+name: "Monthly Bank Statement"
+sections:
+  - id: "account_info"
+    description: "Account holder details"
+    keywords: ["Account Number", "Account Holder", "Period"]
+  - id: "summary"
+    description: "Balance summary"
+    keywords: ["Opening Balance", "Closing Balance", "Total Credits", "Total Debits"]
+  - id: "transactions"
+    description: "List of transactions"
+    keywords: ["Date", "Description", "Amount", "Balance"]
+extraction_rules:
+  - field: "account_number"
+    pattern: "Account Number:\\s*(\\d+)"
+  - field: "closing_balance"
+    pattern: "Closing Balance:\\s*[\\$]?([\\d,]+\\.\\d{2})"

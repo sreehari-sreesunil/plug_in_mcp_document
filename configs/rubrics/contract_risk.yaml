@@ -1,0 +1,12 @@
+rubric_id: "contract_risk_v1"
+name: "Legal Contract Risk Assessment"
+criteria:
+  - id: "missing_termination"
+    description: "No clear termination clause found"
+    risk_level: "HIGH"
+  - id: "uncapped_liability"
+    description: "Liability is not capped at contract value"
+    risk_level: "CRITICAL"
+  - id: "payment_ambiguity"
+    description: "Payment terms are not clearly defined (e.g. Net 30)"
+    risk_level: "MEDIUM"

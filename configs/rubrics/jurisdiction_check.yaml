@@ -1,0 +1,12 @@
+rubric_id: "jurisdiction_check_v1"
+name: "Legal Initial Review"
+criteria:
+  - id: "statute_of_limitations"
+    description: "Claim appears time-barred"
+    risk_level: "HIGH"
+  - id: "improper_venue"
+    description: "Filed in wrong court based on location"
+    risk_level: "MEDIUM"
+  - id: "missing_relief"
+    description: "Prayer for relief is missing"
+    risk_level: "CRITICAL"

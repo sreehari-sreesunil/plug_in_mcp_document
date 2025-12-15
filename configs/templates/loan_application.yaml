@@ -1,0 +1,17 @@
+template_id: "loan_application_v1"
+name: "Personal Loan Application"
+sections:
+  - id: "applicant_info"
+    description: "Applicant's personal information"
+    keywords: ["Name", "Address", "SSN", "DOB"]
+  - id: "income_details"
+    description: "Employment and income information"
+    keywords: ["Employer", "Salary", "Position", "Years Employed"]
+  - id: "loan_details"
+    description: "Requested loan amount and purpose"
+    keywords: ["Loan Amount", "Purpose", "Term"]
+extraction_rules:
+  - field: "applicant_name"
+    pattern: "Name:\\s*(.*)"
+  - field: "annual_income"
+    pattern: "Annual Income:\\s*[\\$]?([\\d,]+)"

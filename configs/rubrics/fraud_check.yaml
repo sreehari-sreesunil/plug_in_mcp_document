@@ -1,0 +1,12 @@
+rubric_id: "fraud_check_v1"
+name: "Financial Fraud Detection"
+criteria:
+  - id: "large_cash_deposit"
+    description: "Cash deposit exceeding $10,000"
+    risk_level: "HIGH"
+  - id: "structuring"
+    description: "Multiple transactions just below reporting threshold"
+    risk_level: "CRITICAL"
+  - id: "negative_balance"
+    description: "Account is consistently overdrawn"
+    risk_level: "MEDIUM"

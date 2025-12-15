@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "applicant_name": {
+            "type": "string"
+        },
+        "annual_income": {
+            "type": "number"
+        },
+        "loan_amount": {
+            "type": "number"
+        },
+        "risk_score": {
+            "type": "number"
+        },
+        "risks_identified": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "applicant_name",
+        "risk_score"
+    ]
+}
