@@ -2,16 +2,32 @@ template_id: "loan_application_v1"
 name: "Personal Loan Application"
 sections:
   - id: "applicant_info"
-    description: "Applicant's personal information"
-    keywords: ["Name", "Address", "SSN", "DOB"]
+    description: "Applicant's personal information including identity and contact details"
+    keywords: ["Name", "Address", "SSN", "DOB", "Social Security", "Date of Birth", "Phone", "Email"]
   - id: "income_details"
     description: "Employment and income information"
-    keywords: ["Employer", "Salary", "Position", "Years Employed"]
+    keywords: ["Employer", "Salary", "Position", "Years Employed", "Annual Income", "Monthly Income"]
   - id: "loan_details"
     description: "Requested loan amount and purpose"
-    keywords: ["Loan Amount", "Purpose", "Term"]
+    keywords: ["Loan Amount", "Purpose", "Term", "Interest Rate"]
+  - id: "declarations"
+    description: "Legal declarations and signatures"
+    keywords: ["Signature", "Date", "Declaration", "Witness"]
+
 extraction_rules:
   - field: "applicant_name"
-    pattern: "Name:\\s*(.*)"
+    pattern: "(?:Name|Applicant):\\s*([A-Za-z\\s\\.]+)"
+  - field: "applicant_address"
+    pattern: "(?:Address|Residing at):\\s*([A-Za-z0-9\\s,.-]+)"
+  - field: "ssn"
+    pattern: "(?:SSN|Social Security):\\s*([\\d-]+)"
+  - field: "dob"
+    pattern: "(?:DOB|Date of Birth):\\s*([\\d/.-]+)"
   - field: "annual_income"
-    pattern: "Annual Income:\\s*[\\$]?([\\d,]+)"
+    pattern: "(?:Annual Income|Salary):\\s*[\\$]?([\\d,]+)"
+  - field: "employer"
+    pattern: "(?:Employer|Company):\\s*([A-Za-z0-9\\s,.-]+)"
+  - field: "loan_amount"
+    pattern: "(?:Loan Amount|Amount Requested):\\s*[\\$]?([\\d,]+)"
+  - field: "loan_purpose"
+    pattern: "(?:Purpose|Reason):\\s*([A-Za-z0-9\\s,.-]+)"

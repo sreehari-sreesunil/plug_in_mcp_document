@@ -9,7 +9,27 @@ from config_loader import (
 )
 from document_processor import processor
 
+from jsonschema import validate, ValidationError
+
 mcp = FastMCP("idp-server")
+
+def validate_output(data: dict, schema_name: str) -> dict:
+    """Validate data against a JSON schema if it exists."""
+    schema = get_schema(schema_name)
+    if schema:
+        try:
+            validate(instance=data, schema=schema)
+            data["_validation"] = "passed"
+        except ValidationError as e:
+            data["_validation"] = f"failed: {e.message}"
+    else:
+        data["_validation"] = "no_schema_found"
+    return data
+
+@mcp.resource("system://health")
+def health_check() -> str:
+    """Health check endpoint."""
+    return json.dumps({"status": "healthy"})
 
 # --- Resources ---
 
@@ -111,12 +131,21 @@ def summarize_sections(document_id: str, template_id: str) -> str:
                     val = match.group(1) if match.groups() else match.group(0)
                     extracted_data[field] = val.strip()
     
-    return json.dumps({
+    # Construct Output
+    output = {
         "document_id": document_id,
         "template_id": template_id,
         "extracted_sections": extracted_data,
         "raw_text_snippet": text[:500] + "..." # Context
-    }, indent=2)
+    }
+
+    # Validate against schema if it exists (e.g. template_id + "_schema")
+    # For simplicity, we assume schema name matches template name logic or passed explicitly.
+    # Here checking for generic 'extraction_output' or specific one.
+    # Let's try to find a schema named "{template_id}_schema"
+    # output = validate_output(output, f"{template_id}_output") 
+    
+    return json.dumps(output, indent=2)
 
 @mcp.tool()
 def identify_risks(document_id: str, rubric_id: str = "loan_risk_v1") -> str:
@@ -154,12 +183,23 @@ def identify_risks(document_id: str, rubric_id: str = "loan_risk_v1") -> str:
                 "level": criteria.get('risk_level'),
                 "reason": "Potential missing signature."
             })
-            
-    return json.dumps({
+    
+    # Sampling / Escalation Logic
+    # Trigger manual review if any "High" or "Critical" risk is found
+    high_risk_found = any(r['level'] in ["High", "Critical"] for r in identified_risks)
+    
+    # In a real system, we might check a config threshold like "risk_score > 0.7"
+    # Here we simulate it based on risk levels.
+    
+    output = {
         "document_id": document_id,
         "rubric_id": rubric_id,
-        "risks": identified_risks
-    }, indent=2)
+        "risks": identified_risks,
+        "manual_review_required": high_risk_found,
+        "escalation_reason": "High/Critical risk factors detected" if high_risk_found else None
+    }
+    
+    return json.dumps(output, indent=2)
 
 @mcp.tool()
 def generate_action_checklist(document_id: str, checklist_id: str = "loan_checklist_v1") -> str:

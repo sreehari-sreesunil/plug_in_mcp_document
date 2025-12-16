@@ -1,0 +1,10 @@
+bank_id: "contract_questions_v1"
+name: "Legal Review Questions"
+questions:
+  - "What is the initial term of the agreement?"
+  - "Does the contract automatically renew?"
+  - "Is there a cap on liability? If so, what is the amount?"
+  - "Which state law governs this agreement?"
+  - "What is the notice period required for termination?"
+  - "Are there any exclusivity obligations?"
+  - "What are the payment terms (e.g. Net 30)?"

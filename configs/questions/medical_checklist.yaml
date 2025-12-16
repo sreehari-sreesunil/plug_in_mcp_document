@@ -1,0 +1,10 @@
+bank_id: "medical_questions_v1"
+name: "Clinical Review Questions"
+questions:
+  - "Does the patient have any known drug allergies?"
+  - "Is there a signed HIPAA release form on file?"
+  - "What is the primary diagnosis code (ICD-10)?"
+  - "Has prior authorization been obtained for this procedure?"
+  - "Are there any contraindications for the prescribed medication?"
+  - "Is the patient's insurance policy currently active?"
+  - "When was the last documented physical exam?"

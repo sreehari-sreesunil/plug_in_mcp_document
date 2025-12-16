@@ -1,0 +1,11 @@
+checklist_id: "medical_checklist_v1"
+name: "Patient Intake & Billing Workflow"
+items:
+  - "Verify Patient Identity (Two Identifiers)"
+  - "Confirm HIPAA Consent Form is signed"
+  - "Validate Insurance Eligibility & Benefits"
+  - "Screen for Allergies and Contraindications"
+  - "Ensure Primary Diagnosis matches Coding Standards (ICD-10)"
+  - "Review Prior Authorization Requirements"
+  - "Update Emergency Contact Information"
+  - "Confirm Next Appointment / Follow-up Plan"

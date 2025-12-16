@@ -2,11 +2,18 @@ rubric_id: "contract_risk_v1"
 name: "Legal Contract Risk Assessment"
 criteria:
   - id: "missing_termination"
-    description: "No clear termination clause found"
-    risk_level: "HIGH"
-  - id: "uncapped_liability"
-    description: "Liability is not capped at contract value"
-    risk_level: "CRITICAL"
-  - id: "payment_ambiguity"
-    description: "Payment terms are not clearly defined (e.g. Net 30)"
-    risk_level: "MEDIUM"
+    description: "Contract lacks a clear 'Termination for Convenience' clause."
+    risk_level: "High"
+    indicators: ["missing termination", "no exit clause", "lock-in"]
+  - id: "unlimited_liability"
+    description: "Liability clause is uncapped or overly broad."
+    risk_level: "Critical"
+    indicators: ["unlimited liability", "consequential damages", "all losses"]
+  - id: "auto_renewal"
+    description: "Contract auto-renews without sufficient notice period."
+    risk_level: "Medium"
+    indicators: ["auto-renewal", "automatic extension", "evergreen"]
+  - id: "ambiguous_jurisdiction"
+    description: "Governing law or venue is missing or unfavorable."
+    risk_level: "Medium"
+    indicators: ["missing jurisdiction", "unspecified venue"]

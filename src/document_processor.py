@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import pdfplumber
 import docx
+import pytesseract
+from PIL import Image
 
 DATA_DIR = os.environ.get("DATA_PATH", "data")
 
@@ -32,11 +34,34 @@ class DocumentProcessor:
             text = ""
             with pdfplumber.open(path) as pdf:
                 for page in pdf.pages:
-                    text += page.extract_text() or ""
+                    # Try digital text extraction first
+                    page_text = page.extract_text()
+                    if page_text:
+                        text += page_text + "\n"
+                    else:
+                        # Fallback to OCR if page contains no digital text
+                        # Note: user needs tesseract installed on the system
+                        try:
+                            # Convert PDF page to image (requires extra deps like pdf2image ideally, 
+                            # but simple pytesseract.image_to_string works on image objects)
+                            # For simplicity in this demo without heavy pdf2image/poppler:
+                            # We advise user to upload images for OCR or rely on digital PDFs.
+                            # Real production code would use 'pdf2image' here.
+                            text += "[OCR not fully implemented for PDF without system deps, please upload PNG/JPG for OCR test.]\n"
+                        except Exception:
+                            pass
+                            
             return text
         elif ext == ".docx":
             doc = docx.Document(path)
             return "\n".join([para.text for para in doc.paragraphs])
+        elif ext in [".png", ".jpg", ".jpeg", ".tiff", ".bmp"]:
+             try:
+                 image = Image.open(path)
+                 text = pytesseract.image_to_string(image)
+                 return text
+             except Exception as e:
+                 return f"Error performing OCR on image: {str(e)}"
         else:
             return f"[Unsupported file type: {ext}]"
 

@@ -1,0 +1,10 @@
+bank_id: "hr_questions_v1"
+name: "Candidate Interview Questions"
+questions:
+  - "Can you describe a challenging project you worked on recently?"
+  - "Why are you looking to leave your current role?"
+  - "What are your salary expectations?"
+  - "Are you willing to relocate for this position?"
+  - "Can you explain the gap in your employment history between [Year] and [Year]?"
+  - "What is your experience with [specific skill from resume]?"
+  - "Do you have legal authorization to work in this country?"

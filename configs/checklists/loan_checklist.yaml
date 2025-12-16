@@ -1,0 +1,12 @@
+checklist_id: "loan_checklist_v1"
+name: "Loan Processing Workflow"
+items:
+  - "Verify Applicant Identity (KYC Check)"
+  - "Validate SSN and Date of Birth against external database"
+  - "Confirm Applicant Address via utility bill or credit report"
+  - "Analyze Debt-to-Income (DTI) Ratio"
+  - "Verify Employment Status with listed employer"
+  - "Check Credit Score (Minimum 650 required)"
+  - "Review Bank Statements for last 3 months"
+  - "Validate Loan Purpose compliance"
+  - "Ensure Loan Agreement is signed and dated"

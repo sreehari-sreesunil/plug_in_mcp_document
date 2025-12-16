@@ -1,0 +1,29 @@
+template_id: "medical_record_v1"
+name: "Patient Medical Record"
+sections:
+  - id: "patient_info"
+    description: "Patient demographic and identification details"
+    keywords: ["Patient Name", "DOB", "Medical Record Number", "MRN", "Gender"]
+  - id: "clinical_data"
+    description: "Diagnosis, treatment history, and medications"
+    keywords: ["Diagnosis", "Treatment", "Medication", "Allergies", "History"]
+  - id: "insurance_info"
+    description: "Insurance provider and coverage details"
+    keywords: ["Insurance", "Policy Number", "Group Number", "Payer"]
+  - id: "consent"
+    description: "Patient consent and HIPAA authorization"
+    keywords: ["Consent", "Signature", "Date", "HIPAA"]
+
+extraction_rules:
+  - field: "patient_name"
+    pattern: "(?:Patient Name|Name):\\s*([A-Za-z\\s\\.]+)"
+  - field: "dob"
+    pattern: "(?:DOB|Date of Birth):\\s*([\\d/.-]+)"
+  - field: "diagnosis"
+    pattern: "(?:Diagnosis|Assessment):\\s*([A-Za-z0-9\\s,.-]+)"
+  - field: "mrn"
+    pattern: "(?:MRN|Medical Record Number):\\s*([A-Za-z0-9-]+)"
+  - field: "insurance_provider"
+    pattern: "(?:Insurance|Payer):\\s*([A-Za-z0-9\\s,.-]+)"
+  - field: "policy_number"
+    pattern: "(?:Policy Number|Member ID):\\s*([A-Za-z0-9-]+)"

@@ -1,12 +1,19 @@
 rubric_id: "medical_risk_v1"
-name: "Patient Safety & Risk Rubric"
+name: "Clinical Documentation Risk Assessment"
 criteria:
-  - id: "contraindication"
-    description: "Prescribed medication conflicts with allergies"
-    risk_level: "CRITICAL"
-  - id: "missing_diagnosis"
-    description: "Symptoms listed but no clear diagnosis"
-    risk_level: "HIGH"
+  - id: "missing_consent"
+    description: "HIPAA consent form is missing or unsigned."
+    risk_level: "Critical"
+    indicators: ["missing consent", "unsigned", "no signature"]
+  - id: "drug_interaction"
+    description: "Potential drug-drug or drug-allergy interactions noted."
+    risk_level: "High"
+    indicators: ["interaction", "contraindication", "allergy warning"]
+  - id: "insurance_mismatch"
+    description: "Insurance details do not match active coverage guidelines."
+    risk_level: "Medium"
+    indicators: ["expired policy", "coverage denied", "out of network"]
   - id: "incomplete_history"
-    description: "Missing past medical history section"
-    risk_level: "MEDIUM"
+    description: "Past medical history is vague or incomplete."
+    risk_level: "Low"
+    indicators: ["history unavailable", "patient unable to recall"]

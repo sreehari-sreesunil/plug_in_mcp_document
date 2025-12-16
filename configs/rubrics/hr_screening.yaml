@@ -1,0 +1,19 @@
+rubric_id: "hr_screening_v1"
+name: "Candidate Screening Rubric"
+criteria:
+  - id: "skill_match"
+    description: "Candidate possesses the required core skills for the role."
+    risk_level: "High"
+    indicators: ["missing skills", "irrelevant stack", "does not meet requirements"]
+  - id: "experience_gap"
+    description: "Significant unexplained gaps in employment history."
+    risk_level: "Medium"
+    indicators: ["employment gap", "break in service", "long hiatus"]
+  - id: "short_tenure"
+    description: "Candidate has a history of changing jobs frequently (job hopping)."
+    risk_level: "Medium"
+    indicators: ["job hopping", "short tenure", "< 1 year"]
+  - id: "location_mismatch"
+    description: "Candidate is not located in the required region/timezone."
+    risk_level: "Low"
+    indicators: ["wrong location", "relocation needed"]

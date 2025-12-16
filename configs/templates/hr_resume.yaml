@@ -1,0 +1,29 @@
+template_id: "hr_resume_v1"
+name: "Candidate Resume"
+sections:
+  - id: "contact_info"
+    description: "Candidate's contact details"
+    keywords: ["Email", "Phone", "LinkedIn", "Address", "Location"]
+  - id: "skills"
+    description: "Technical and soft skills"
+    keywords: ["Skills", "Technologies", "Languages", "Tools", "Expertise"]
+  - id: "experience"
+    description: "Work history and roles"
+    keywords: ["Experience", "Employment", "Work History", "Company", "Title", "Role"]
+  - id: "education"
+    description: "Academic background"
+    keywords: ["Education", "University", "Degree", "College", "GPA", "Graduated"]
+
+extraction_rules:
+  - field: "candidate_name"
+    pattern: "^([A-Za-z\\s\\.]+)" 
+  - field: "email"
+    pattern: "([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})"
+  - field: "phone"
+    pattern: "(\\+?[0-9]{1,4}[ -]?)?\\(?([0-9]{3})\\)?[ -]?([0-9]{3})[ -]?([0-9]{4})"
+  - field: "university"
+    pattern: "(?:University|College):?\\s*([A-Za-z\\s,.-]+)"
+  - field: "degree"
+    pattern: "(?:Degree|Major):?\\s*([A-Za-z\\s,.-]+)"
+  - field: "current_role"
+    pattern: "(?:Current Role|Title):?\\s*([A-Za-z\\s]+)"

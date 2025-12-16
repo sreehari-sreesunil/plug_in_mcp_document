@@ -1,15 +1,19 @@
 rubric_id: "loan_risk_v1"
-name: "Loan Risk Assessment Standard"
+name: "Personal Loan Risk Assessment"
 criteria:
   - id: "high_dti"
-    description: "Debt-to-Income ratio exceeds 40%"
-    risk_level: "HIGH"
-  - id: "unstable_employment"
-    description: "Employment duration less than 2 years"
-    risk_level: "MEDIUM"
-  - id: "low_income"
-    description: "Annual income below $30,000"
-    risk_level: "HIGH"
+    description: "Debt-to-Income ratio appears high or income is insufficient for loan amount."
+    risk_level: "High"
+    indicators: ["high debt", "low income", "insufficient salary", "overleverage"]
   - id: "missing_info"
-    description: "Critical fields (SSN, Signature) are missing"
-    risk_level: "CRITICAL"
+    description: "Critical application information is missing (SSN, Address, Signature)."
+    risk_level: "Medium"
+    indicators: ["missing signature", "no ssn", "no address", "incomplete"]
+  - id: "credit_history"
+    description: "Indications of poor credit history or bankruptcy."
+    risk_level: "High"
+    indicators: ["bankruptcy", "default", "late payment", "collection"]
+  - id: "employment_gaps"
+    description: "Unstable employment history or short tenure."
+    risk_level: "Medium"
+    indicators: ["unemployed", "gap in employment", "short tenure"]

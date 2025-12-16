@@ -1,0 +1,12 @@
+checklist_id: "hr_checklist_v1"
+name: "Hiring & Onboarding Workflow"
+items:
+  - "Review Resume against Job Description"
+  - "Conduct Initial Phone Screen"
+  - "Verify Educational Credentials"
+  - "Check Professional References (min 2)"
+  - "Administer Technical Assessment / Take-home test"
+  - "Schedule Cultural Fit Interview"
+  - "Negotiate Offer Terms (Salary, Equity, Start Date)"
+  - "Send Offer Letter via DocuSign"
+  - "Initiate Background Check"

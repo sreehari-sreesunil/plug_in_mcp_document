@@ -1,0 +1,27 @@
+template_id: "legal_contract_v1"
+name: "Legal Contract / Agreement"
+sections:
+  - id: "parties"
+    description: "Identity of the contracting parties"
+    keywords: ["Party A", "Party B", "Provider", "Client", "Between", "And"]
+  - id: "terms"
+    description: "Duration and renewal terms"
+    keywords: ["Term", "Duration", "Effective Date", "Expiration", "Renewal"]
+  - id: "financials"
+    description: "Payment terms and compensation"
+    keywords: ["Fees", "Payment", "Compensation", "Invoice", "Net 30"]
+  - id: "leagl_clauses"
+    description: "Critical legal clauses like indemnity and liability"
+    keywords: ["Indemnity", "Liability", "Termination", "Jurisdiction", "Governing Law"]
+
+extraction_rules:
+  - field: "effective_date"
+    pattern: "(?:Effective Date|Date):\\s*([A-Za-z0-9,.-]+)"
+  - field: "term_duration"
+    pattern: "(?:Term|Duration):\\s*([A-Za-z0-9\\s]+)"
+  - field: "party_a"
+    pattern: "(?:Between|Party A):\\s*([A-Za-z0-9\\s,.-]+)"
+  - field: "governing_law"
+    pattern: "(?:Governing Law|Jurisdiction):\\s*([A-Za-z\\s]+)"
+  - field: "payment_terms"
+    pattern: "(?:Payment Terms|Due):\\s*([A-Za-z0-9\\s]+)"

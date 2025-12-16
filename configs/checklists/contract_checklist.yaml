@@ -1,0 +1,12 @@
+checklist_id: "contract_checklist_v1"
+name: "Contract Review & Execution Workflow"
+items:
+  - "Verify Effective Date and Term Duration"
+  - "Confirm names and legal entities of all Counterparties"
+  - "Check for 'Termination for Convenience' clause"
+  - "Review Indemnification and Liability Caps"
+  - "Validate Payment Terms (e.g., Net 30, Net 60)"
+  - "Ensure Governing Law matches company policy"
+  - "Confirm non-solicitation / non-compete scope"
+  - "Obtain Legal Counsel approval if value > $50k"
+  - "Execute Signatures from authorized representatives"

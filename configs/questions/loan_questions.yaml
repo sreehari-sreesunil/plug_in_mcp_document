@@ -1,0 +1,10 @@
+bank_id: "loan_questions_v1"
+name: "Loan Officer Scrutiny Questions"
+questions:
+  - "What is the primary purpose of this loan?"
+  - "Can you explain any employment gaps in the last 2 years?"
+  - "Is the stated annual income gross or net?"
+  - "Are there any other outstanding debts not listed here?"
+  - "Can you provide proof of residence at the current address?"
+  - "Has the applicant ever filed for bankruptcy?"
+  - "Is there a co-signer available for this application?"
