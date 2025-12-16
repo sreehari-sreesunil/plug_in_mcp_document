@@ -43,6 +43,38 @@ def get_rubric(rubric_id: str):
             return r
     return None
 
+    return None
+
+def get_checklists():
+    checklists_dir = Path(CONFIG_DIR) / "checklists"
+    checklists = []
+    if checklists_dir.exists():
+        for f in checklists_dir.glob("*.yaml"):
+            checklists.append(load_yaml(str(f)))
+    return checklists
+
+def get_checklist(checklist_id: str):
+    checklists = get_checklists()
+    for c in checklists:
+        if c.get('checklist_id') == checklist_id:
+            return c
+    return None
+
+def get_question_banks():
+    questions_dir = Path(CONFIG_DIR) / "questions"
+    banks = []
+    if questions_dir.exists():
+        for f in questions_dir.glob("*.yaml"):
+            banks.append(load_yaml(str(f)))
+    return banks
+
+def get_question_bank(bank_id: str):
+    banks = get_question_banks()
+    for b in banks:
+        if b.get('question_bank_id') == bank_id:
+            return b
+    return None
+
 def get_schema(schema_name: str):
     # schema_name can be "loan_output" (without ext)
     schema_path = Path(CONFIG_DIR) / "schemas" / f"{schema_name}.json"

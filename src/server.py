@@ -1,7 +1,12 @@
 from fastmcp import FastMCP
 import re
 import json
-from config_loader import get_templates, get_rubrics, get_schema, get_template, get_rubric
+import base64
+import binascii
+from config_loader import (
+    get_templates, get_rubrics, get_schema, get_template, get_rubric,
+    get_checklists, get_checklist, get_question_banks, get_question_bank
+)
 from document_processor import processor
 
 mcp = FastMCP("idp-server")
@@ -32,7 +37,32 @@ def get_output_schema(schema_name: str) -> str:
         return json.dumps(schema, indent=2)
     return "Schema not found."
 
+@mcp.resource("config://checklists")
+def list_checklists() -> str:
+    """List available action checklists."""
+    return json.dumps(get_checklists(), indent=2)
+
+@mcp.resource("config://questions")
+def list_question_banks() -> str:
+    """List available question banks."""
+    return json.dumps(get_question_banks(), indent=2)
+
 # --- Tools ---
+
+@mcp.tool()
+def upload_document(filename: str, file_content_base64: str) -> str:
+    """
+    Upload a document to the server.
+    Args:
+        filename: The name of the file to save (e.g., 'resume.docx').
+        file_content_base64: The base64 encoded content of the file.
+    """
+    try:
+        content = base64.b64decode(file_content_base64)
+        path = processor.save_upload(filename, content)
+        return f"Successfully uploaded document to {path}"
+    except Exception as e:
+        return f"Error uploading document: {str(e)}"
 
 @mcp.tool()
 def extract_document(document_id: str) -> str:
@@ -132,19 +162,26 @@ def identify_risks(document_id: str, rubric_id: str = "loan_risk_v1") -> str:
     }, indent=2)
 
 @mcp.tool()
-def generate_action_checklist(document_id: str) -> str:
+def generate_action_checklist(document_id: str, checklist_id: str = "loan_checklist_v1") -> str:
     """
     Generate a checklist of actions based on document status.
     Args:
         document_id: The filename of the document.
+        checklist_id: The ID of the checklist to use (default: loan_checklist_v1).
     """
-    # Placeholder logic
-    return json.dumps([
-        "Verify applicant identity",
-        "Validate income proof",
-        "Check credit score manually if < 600",
-        "Confirm signature validity"
-    ], indent=2)
+    # In a real scenario, we might check document contents to conditionally include items
+    # For now, we return the static items from config, but filtering could happen here.
+    
+    checklist = get_checklist(checklist_id)
+    if not checklist:
+        return f"Error: Checklist '{checklist_id}' not found."
+
+    # Return the items from the config
+    return json.dumps({
+        "document_id": document_id,
+        "checklist_id": checklist_id,
+        "checklist": checklist.get('items', [])
+    }, indent=2)
 
 if __name__ == "__main__":
     import uvicorn

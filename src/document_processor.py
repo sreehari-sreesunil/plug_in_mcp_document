@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import pdfplumber
+import docx
 
 DATA_DIR = os.environ.get("DATA_PATH", "data")
 
@@ -33,6 +34,9 @@ class DocumentProcessor:
                 for page in pdf.pages:
                     text += page.extract_text() or ""
             return text
+        elif ext == ".docx":
+            doc = docx.Document(path)
+            return "\n".join([para.text for para in doc.paragraphs])
         else:
             return f"[Unsupported file type: {ext}]"
 

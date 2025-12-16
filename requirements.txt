@@ -7,3 +7,13 @@ pdfplumber
 jsonschema
 python-multipart
 google-genai
+fastmcp
+uvicorn
+pydantic
+PyYAML
+httpx
+pdfplumber
+jsonschema
+python-multipart
+google-genai
+python-docx
